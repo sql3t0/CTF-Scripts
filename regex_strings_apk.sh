@@ -6,6 +6,12 @@ Y='\033[0;33m'
 WORDS="ENCODED|DECODED|USERNAME|PASSWORD|LOGIN|PASSWD|API|KEY|TOKEN|BEARER|AUTH|BASIC|USUARIO|SENHA|PWD|USER|ROOT|URL|PATH|HTTP|FLAG"
 jadx="C:\PentestBox\bin\androidsecurity\jadx\bin\jadx.bat"
 
+if [ -z "$1" ];
+    then
+        printf "$Y[!] Usage :$N script.sh APK_NAME"
+        exit
+fi
+
 printf "$Y[>] Decompressing APK...$N\n"
 $jadx --deobf "$1"  1>/dev/null
 s="$1" && folder=${s/\.apk/}
@@ -32,4 +38,3 @@ if [ "$REMOVER" = "y" ] || [ "$REMOVER" = "Y" ];
     else
         cd - 1>/dev/null
 fi
-
