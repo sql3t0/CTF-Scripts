@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "[>] Geando certificados PEM apartir do DER"
+echo "[>] Geando certificados PEM apartir do CER"
 openssl x509 -inform DER -in burp.cer -out burp.pem
 wait
 
