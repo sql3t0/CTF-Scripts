@@ -569,7 +569,7 @@ def brute(host, username, passwords, domain, hashes = None):
 
 host=sys.argv[1]
 username=sys.argv[2]
-passwords=chunk([x.strip() for x in open(sys.argv[3])],50) # Number of threads == 15
+passwords=chunk([x.strip() for x in open(sys.argv[3])],15) # Number of threads == 15
 domain=''
 for passwds in passwords:
   threading.Thread(target=brute,args=(host, username, passwds, domain)).start() 
