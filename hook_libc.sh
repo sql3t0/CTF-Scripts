@@ -2,6 +2,9 @@
 # 
 # Script to hook some libc.so functions 
 #
+# sudo apt-get update
+# sudo apt-get install gcc-multilib
+#
 
 if [ -z "$1" ]
 	then 
