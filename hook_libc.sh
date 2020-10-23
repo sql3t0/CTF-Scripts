@@ -19,15 +19,26 @@ echo "Running '$1' $arch-bit..."
 gcc -shared -o hook.so -m$arch -x c - <<EOF
 #include <stdio.h>
 #include <string.h>
-#include <unistd.h>
 
-long ptrace(int request, int pid, void *addr, void *data) {
+long ptrace(int request, int pid, void *addr, void *data)
+{
 	return 0;
 }
 
-int strcmp(const char *str1, const char *str2){
-	printf("strcmp : <%s> <%s>", str1, str2);
-	return 0;
+int strcmp(const char *str1, const char *str2)
+{
+	printf("strcmp : <%s> <%s> \n", str1, str2);
+	while(*str1)
+	{
+		if (*str1 != *str2)
+			break;
+
+		str1++;
+		str2++;
+	}
+
+	//return 0; 
+	return *(const unsigned char*)str1 - *(const unsigned char*)str2;
 }
 
 int strncmp(const char *str1, const char *str2, size_t n){
@@ -82,7 +93,7 @@ char *strncpy(char *dest, const char *src, size_t n)
 }
 EOF
 
-LD_PRELOAD=./bypass.so ./$1 
+LD_PRELOAD=./hook.so ./$1 
 
 
 # By Sql3t0
