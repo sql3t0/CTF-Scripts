@@ -1,1 +1,1 @@
-<?php echo $_SERVER["SITE_HTMLROOT"]; ?>
+<?php echo 123; ?>
