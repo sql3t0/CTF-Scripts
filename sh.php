@@ -1,1 +1,1 @@
-<? highlight_file('getimage.php'); ?>
+<script>alert(document.cookie);</script>
