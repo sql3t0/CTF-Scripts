@@ -1,1 +1,1 @@
-<?php echo 123; ?>
+<?php system('id'); ?>
