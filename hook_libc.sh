@@ -42,7 +42,7 @@ int strcmp(const char *str1, const char *str2)
 }
 
 int strncmp(const char *str1, const char *str2, size_t n){
-	printf("strncmp : <%s> <%s>", str1, str2);
+	printf("strncmp : <%s> <%s> \n", str1, str2);
 	return 0;
 }
 
@@ -55,13 +55,13 @@ size_t strlen(const char *str){
 }
 
 unsigned int sleep(unsigned int seconds){
-	printf("\nSleep: Hooked");
+	printf("sleep: Hooked\n");
 	return 0;
 }
 
 char *strcpy(char* destination, const char* source)
 {
-	printf("strlen : <%s> <%s> ", source, destination);
+	printf("strcpy : <%s> <%s> \n", source, destination);
 	if (destination == NULL)
 		return NULL;
 
@@ -81,7 +81,7 @@ char *strcpy(char* destination, const char* source)
 
 char *strncpy(char *dest, const char *src, size_t n)
 {
-	printf("strlen : <%s> <%s> <%d>", src, dest, n);
+	printf("strncpy : <%s> <%s> <%d> \n", src, dest, n);
 
 	size_t i;
 	for (i = 0; i < n && src[i] != '\0'; i++)
