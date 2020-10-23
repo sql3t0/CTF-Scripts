@@ -1,0 +1,1 @@
+<? highlight_file('getimage.php'); ?>
