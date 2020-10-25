@@ -42,9 +42,9 @@ if len(sys.argv) <= 1 :
 		print cipher(data.replace('\n',''))
 		rotateASCIIvalues(data.replace('\n',''))
 	else:
-		print('Usage : %s "string_sequency"'%sys.argv[0])
+		print('Usage : scriptname.py "string_sequency"')
 		print('      : or ')
-		print('      : STDOUT | %s '%sys.argv[0])
+		print('      : STDOUT | scriptname.py ')
 else:
 	if not sys.stdin.isatty():
 		data = sys.stdin.read()

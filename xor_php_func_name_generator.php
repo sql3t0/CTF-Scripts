@@ -1,9 +1,4 @@
 <?
-
-function ofuscateWords($string){
-
-}
-
 if(sizeof($argv) < 2){
 	echo "Usage: ".$argv[0]." FuncName  ( E.g: system )";
 	die();

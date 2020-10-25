@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # pip install msoffcrypto-tool
 #
-# By Sqql3t0
+# By Sql3t0
 import sys
 import msoffcrypto
 

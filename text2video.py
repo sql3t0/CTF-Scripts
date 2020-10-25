@@ -3,12 +3,11 @@
 import numpy as np
 from moviepy.editor import *
 from moviepy.video.tools.segmenting import findObjects
-from skimage import transform as tf
 
 # WE CREATE THE TEXT THAT IS GOING TO MOVE, WE CENTER IT.
 
 screensize = (920,500)
-txtClip = TextClip('DeadLockTeam CTF \n[ Sql3t0 ]',color='#68AF14', font="Amiri-Bold", kerning = 5, fontsize=80)
+txtClip = TextClip('DeadLockTeam CTF \n[ Sql3t0 ]',color='white', font="Amiri-Bold", kerning = 5, fontsize=80)
 cvc = CompositeVideoClip( [txtClip.set_pos('center')], size=screensize)
 
 # THE NEXT FOUR FUNCTIONS DEFINE FOUR WAYS OF MOVING THE LETTERS
@@ -45,6 +44,7 @@ def vortexout(screenpos,i,nletters):
 # WE USE THE PLUGIN findObjects TO LOCATE AND SEPARATE EACH LETTER
 
 letters = findObjects(cvc) # a list of ImageClips
+
 
 # WE ANIMATE THE LETTERS
 

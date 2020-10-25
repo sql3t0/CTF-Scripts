@@ -1,0 +1,11 @@
+#!/usr/bin/python
+
+import sys
+
+if len(sys.argv) <= 2 :
+	print('Usage : hex2ascii [-d][-e] "<string_sequency>"')
+else:
+	if sys.argv[1] == "-d" :
+		print sys.argv[2].replace(" ","").decode("HEX")
+	if sys.argv[1] == "-e" :
+		print sys.argv[2].encode("HEX")

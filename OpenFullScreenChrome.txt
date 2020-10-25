@@ -1,0 +1,1 @@
+start chrome.exe -kiosk -fullscreen http://26.media.tumblr.com/tumblr_lh2wn4xw9p1qazkdco1_500.gif

@@ -1,0 +1,24 @@
+#!/usr/bin/python
+import sys
+
+def decod(text):
+	decode = ""
+	for i in range(len(text)):
+		decode = decode + chr(int(text[i]))
+	
+	return decode
+
+def encod(text):
+	encode = ""
+	for i in range(len(text)):
+		encode = encode + str(ord(text[i]))
+	
+	return encode
+
+if len(sys.argv) <= 2:
+	print('Usage : dec2ascii [-d][-e] "string_sequency"')
+else:
+	if(sys.argv[1] == "-d"):
+		print decod(sys.argv[2].split(" "))
+	if(sys.argv[1] == "-e"):
+		print encod(sys.argv[2])

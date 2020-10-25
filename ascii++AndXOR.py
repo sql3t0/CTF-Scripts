@@ -22,7 +22,7 @@ def ascii_pp(msg):
 		print '[XOR]',i,'-',r.strip('\r').replace('\n',''),' [HEX] ',r.encode('HEX')
 		#XOR 1byte
 
-	for i in range(100):
+	for i in string.digits:
 		r=''
 		for x in msg:
 			try:
