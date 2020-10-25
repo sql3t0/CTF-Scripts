@@ -70,7 +70,7 @@ size_t strlen(const char *str){
 }
 
 unsigned int sleep(unsigned int seconds){
-	printf("sleep: Hooked\n");
+	printf("sleep...\n");
 	return 0;
 }
 
