@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Mouse envent</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <input type="text" id="teste"/>
+    <br>
+    <form action="#">
+        <input type="submit" value="testebt"/>
+    </form>
+
+    <script>
+        (function() {
+            websocket = new WebSocket('ws://127.0.0.1:8000/');
+            var x, y, c = 0, k='null';
+
+            function send(x, y, c, k){
+                websocket.send('{"x":'+x+', "y":'+y+', "c":"'+c+'", "k":"'+k+'"}');
+            }
+            
+            document.onmousemove = function(e) {
+                x = e.pageX; y = e.pageY; send(x,y,c,k);
+            }
+
+            document.onclick = function(e){ 
+                if (e.button == 0) { send(x,y,1,k); } 
+            }
+
+            document.onkeypress = function(e) {
+                var chr = String.fromCharCode(e.which || e.keyCode); send(x,y,1,chr);
+            }
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Mouse envent</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <input type="text" id="teste"/>
+    <br>
+    <form action="#">
+        <input type="submit" value="testebt"/>
+    </form>
+    
+    <script>
+        (function() {
+            var elem = document.createElement('div');
+            Object.assign(elem, {
+                id: 'cursor',
+                style: 'border-radius: 50%; background: red; width: 10px; height: 10px; position: fixed; top: 0; left: 0;'
+            });
+            document.body.appendChild(elem);
+
+            websocket = new WebSocket('ws://127.0.0.1:8000/');
+            // websocket.onopen = function(evt) { onOpen(evt) };
+            // websocket.onclose = function(evt) { onClose(evt) };
+            websocket.onmessage = function(evt) { onMessage(evt) };
+            // websocket.onerror = function(evt) { onError(evt) };
+
+            function onMessage(evt){
+                var element;
+                data = JSON.parse(evt.data);
+                try {
+                    cursor = document.getElementById('cursor');
+                    cursor.style.left= data.x+'px';
+                    cursor.style.top = data.y+'px';
+
+                    if(data.c == 1){
+                        element = document.elementFromPoint(data.x, data.y);
+                        element.click();
+                        // console.log('elementClick...');
+                        // console.log(element);
+                    }
+
+                    if(data.k != 'null'){
+                        // console.log(data.k);
+                        element.value = element.value + data.k;
+                    }
+               } catch (e) {}
+
+            }
+        })();
+    </script>
+</body>
+</html>
