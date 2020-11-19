@@ -33,6 +33,10 @@
             document.onkeypress = function(e) {
                 var chr = String.fromCharCode(e.which || e.keyCode); send(x,y,1,chr);
             }
+
+            document.onkeydown = function(e) {
+                if(e.which === 8){ send(x,y,1,'backspace'); }
+            }
         })();
     </script>
 </body>
