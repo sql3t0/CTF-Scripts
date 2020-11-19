@@ -39,13 +39,14 @@
                     if(data.c == 1){
                         element = document.elementFromPoint(data.x, data.y);
                         element.click();
-                        // console.log('elementClick...');
-                        // console.log(element);
                     }
 
                     if(data.k != 'null'){
-                        // console.log(data.k);
-                        element.value = element.value + data.k;
+                        if(data.k === 'backspace'){
+                            element.value = element.value.slice(0,-1);
+                        }else{
+                            element.value = element.value + data.k;
+                        }
                     }
                } catch (e) {}
 
