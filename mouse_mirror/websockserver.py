@@ -1,5 +1,12 @@
 # python3 -m pip install SimpleWebSocketServer
+import sys, datetime
 from SimpleWebSocketServer import SimpleWebSocketServer, WebSocket
+
+if len(sys.argv) < 3:
+   print(f'[!] Usage: {sys.argv[0]} IP PORT [-v]')
+   exit()
+
+IP, PORT = [sys.argv[1], int(sys.argv[2])]
 
 clients = []
 class SimpleServer(WebSocket):
@@ -7,6 +14,8 @@ class SimpleServer(WebSocket):
     def handleMessage(self):
        for client in clients:
           if client != self:
+             if len(sys.argv) == 4:
+               print(f'[{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] {self.address[0]} : {self.data}')
              client.sendMessage(self.data)
 
     def handleConnected(self):
@@ -21,6 +30,6 @@ class SimpleServer(WebSocket):
        for client in clients:
           client.sendMessage(self.address[0] + u' - disconnected')
 
-server = SimpleWebSocketServer('127.0.0.1', 8000, SimpleServer)
-print('WebSocket Server running on PORT 8000')
+server = SimpleWebSocketServer(IP, int(PORT), SimpleServer)
+print(f'WebSocket Server running on PORT http://{IP}:{PORT}')
 server.serveforever()
