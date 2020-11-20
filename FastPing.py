@@ -7,24 +7,23 @@ def info(txt):
 
 def ping(host):
     try:
+        IP = ''
         with open(os.devnull, "wb") as limbo:
             if  platform.system().lower()=="windows":
                 r = subprocess.Popen(["ping","-n","1" ,host], stdout=limbo, stderr=limbo).wait()
-                cmd = f"ping {host} | egrep -o '\[.*\]'"
-                ps = subprocess.Popen(cmd, shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
-                IP = ps.communicate()[0].decode('iso-8859-1').strip().replace('[','').replace(']','')
+                IP = subprocess.Popen("ping -n 1 "+host+" | grep 'Disparando' | egrep -o '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'", shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT).communicate()[0].decode('iso-8859-1').strip()
                 if r == 0:
-                    info(f'\r{colored("[+]", "green")};{host};{IP}\n')
+                    info(f'\r{colored("+", "green")};{host};{IP}\n')
                 else:
-                    info(f'\r{colored("[-]", "red")};{host};{IP}\n')
+                    info(f'\r{colored("-", "red")};{host};{IP}\n')
             else:
                 r = subprocess.Popen(["ping","-c","1" ,host], stdout=limbo, stderr=limbo).wait()
                 if r == 0:
-                    info(f'\r{colored("[+]", "green")};{host}\n')
+                    info(f'\r{colored("+", "green")};{host}\n')
                 else:
-                    info(f'\r{colored("[-]", "red")};{host}\n')
+                    info(f'\r{colored("-", "red")};{host}\n')
     except Exception as e:
-        info(f'\r[>] {host}, ERRO\n')
+        info(f'\r[!] {host}, ERRO\n')
         print(e)
         pass
 
