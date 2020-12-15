@@ -9,7 +9,10 @@ LGRE='\033[1;32m';
 NC='\033[0m';
 for FILENAME in $(find / -perm /4000 2>/dev/null)
     do
-        for T in $(strace -s 9999 $FILENAME --help 2>&1 | egrep "open\(|access\(|execve\(" | sort -u | cut -d '"' -f2 )
+        #---------------------------------------------------------------------------------------------#
+        # Essa parte do script pode acabar rodando algum programa de forma indevida e gerar problemas # 
+        #---------------------------------------------------------------------------------------------#
+        for T in $(strace -s 9999 $FILENAME --help 2>&1 | egrep 'open\("|access\("|execve\("' | sort -u | cut -d '"' -f2 )
             do 
                 DIRT=$(dirname $T 2>/dev/null)
                 PERML=$(stat -L -c "%U" $T 2>/dev/null);
@@ -21,6 +24,7 @@ for FILENAME in $(find / -perm /4000 2>/dev/null)
                 
                 printf "${STATUSC}[$STATUS]${NC} `hostname`, ${GRE}$FILENAME${NC}, ${BLU}$DIRT${NC} (${COLORD}$PERMD${NC}), $T (${COLORL}$PERML${NC})\n"
             done
+        #---------------------------------------------------------------------------------------------#
         for LIB in $(ldd $FILENAME 2>/dev/null | grep '=>' | cut -d' ' -f 3 | sort -u)
             do
                 DIR=$(dirname $LIB 2>/dev/null)
