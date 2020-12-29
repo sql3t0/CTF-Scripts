@@ -2,7 +2,7 @@
 #for ip in $(cat ips_ssh);do sshpass -p "P4ssw0rd!" ssh -o StrictHostKeyChecking=no username@$ip 'bash -s' < regex_users_and_pass.sh;done
 
 printf "\n[>] Procurando Credenciais em : `hostname` ...\n"
-for dir in $(find / -maxdepth 2 -type d 2>/dev/null | egrep -v "/proc|/lib|/bin|/sbin|lib*/|boot|mnt/|^/$" | egrep -v "^/\w+$")
+for dir in $(find / -maxdepth 2 -type d 2>/dev/null | egrep -v "/proc|/lib|/bin|/sbin|/lib*|/boot|/mnt|^/$" | egrep -v "^/\w+$")
     do
         PatternUser="user|username|user-name|usuario|login|mail|email"
         PatternPass="pw|pass|passw|passwd|password|senha|creds|secret"
