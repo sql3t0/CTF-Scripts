@@ -10,7 +10,7 @@ YEL='\033[1;33m'
 BLU='\033[0;34m'
 NC='\033[0m'
 DATETIME=$(date '+%d/%m/%Y %H:%M:%S')
-DISPOSITIVO=/dev/ttyACM0
+DISPOSITIVO=$1
 
 LISTAOP=`echo AT+COPS=? | socat - $DISPOSITIVO,echo=0,crnl`
 RECEIVEDSMS=`echo 'AT+CMGL="ALL"' | socat - $DISPOSITIVO,echo=0,crnl`
@@ -47,11 +47,10 @@ echo -e "${YEL}Modo SMS Ativo: ${NC} $(echo $SMSMODE|tr '\n' ' ')"
 echo -e "${BLU}Enviando SMS...${NC}"
 MENSAGEM=$(cat <<-END
 AT+CMGS="85987654321"
-WAIT=2
+Mensagem de teste $DATETIME
 ^Z
 END
 )
 
 echo -e "$MENSAGEM" | socat - $DISPOSITIVO,echo=0,crnl
-echo -e "Mensagem de teste $DATETIME\x0d" | socat - $DISPOSITIVO,echo=0,crnl
 echo -e "\x1a" | socat - $DISPOSITIVO,echo=0,crnl
