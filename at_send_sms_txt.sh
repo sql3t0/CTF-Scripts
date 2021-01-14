@@ -52,6 +52,9 @@ Mensagem de teste $DATETIME
 END
 )
 
-SMS=`echo -e "$MENSAGEM\x1a" | socat - $DISPOSITIVO,echo=0,crnl`
+echo AT+CMGS="85987654321" | socat - $DISPOSITIVO,echo=0,crnl
+echo WAIT=3 | socat - $DISPOSITIVO,echo=0,crnl
+echo Mensagem de teste $DATETIME | socat - $DISPOSITIVO,echo=0,crnl
+SMSSTATUS=`echo -e "\x1a" | socat - $DISPOSITIVO,echo=0,crnl`
 echo -e "${YEL}STATUS SMS: ${NC} "
-echo -e "$SMS\n"
+echo -e "$SMSSTATUS\n"
