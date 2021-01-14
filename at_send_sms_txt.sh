@@ -36,7 +36,7 @@ echo -e "$RECEIVEDSMS\n"
 
 
 SMSENCODE=`echo AT+CSCS="GSM" | socat - $DISPOSITIVO,echo=0,crnl`
-echo -e "${YEL} SMS Encode: ${NC} $(echo $SMSENCODE|tr '\n' ' ')"
+echo -e "${YEL}SMS Encode: ${NC} $(echo $SMSENCODE|tr '\n' ' ')"
 SMSMODE=`echo AT+CMGF? | socat - $DISPOSITIVO,echo=0,crnl`
 echo -e "${YEL}Modo SMS Ativo: ${NC} $(echo $SMSMODE|tr '\n' ' ')"
 echo -e "${BLU}Setando SMS em modo de Texto...${NC}"
@@ -47,14 +47,11 @@ echo -e "${YEL}Modo SMS Ativo: ${NC} $(echo $SMSMODE|tr '\n' ' ')"
 echo -e "${BLU}Enviando SMS...${NC}"
 MENSAGEM=$(cat <<-END
 AT+CMGS="85987654321"
-WAIT=3
-Mensagem de teste $DATETIME
+WAIT=2
+^Z
 END
 )
 
-echo AT+CMGS="85987654321" | socat - $DISPOSITIVO,echo=0,crnl
-echo WAIT=3 | socat - $DISPOSITIVO,echo=0,crnl
-echo Mensagem de teste $DATETIME | socat - $DISPOSITIVO,echo=0,crnl
-SMSSTATUS=`echo -e "\x1a" | socat - $DISPOSITIVO,echo=0,crnl`
-echo -e "${YEL}STATUS SMS: ${NC} "
-echo -e "$SMSSTATUS\n"
+echo -e "$MENSAGEM" | socat - $DISPOSITIVO,echo=0,crnl
+echo -e "Mensagem de teste $DATETIME\x0d" | socat - $DISPOSITIVO,echo=0,crnl
+echo -e "\x1a" | socat - $DISPOSITIVO,echo=0,crnl
