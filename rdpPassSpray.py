@@ -404,7 +404,7 @@ if __name__ == '__main__':
        ts_request['authInfo'] = signature.getData() + cripted_creds
        tls.send(ts_request.getData())
        tls.close()
-       sys.stdout.write(f"\r{colored('[+]', 'green')},{colored('Host:','blue')} {host},{colored('Username:','blue')} {username},{colored('Password:','blue')} {password},{colored('Domain:','blue')} {domain} [{colored('SUCESS', 'green')}] \n")
+       sys.stdout.write(f"\r{colored('[+]', 'green')} {colored('Host:','blue')}{host},{colored('Username:','blue')}{username},{colored('Password:','blue')}{password},{colored('Domain:','blue')}{domain} [{colored('SUCESS', 'green')}] \n")
        return True
 
     # Init the example's logger theme
@@ -437,7 +437,7 @@ def brute(hosts, username, password, domain, hashes = None):
             if check_rdp(host, username, password , domain, hashes = None):
                 info(f'[+] {host}, {domain}\{username}:{password} ')
         except Exception as e:
-            info(f"\r{colored('[-]', 'red')} {host}, {e} \t\t")
+            info(f"\r{colored('[-]', 'red')} {host}, {e} \t\t\t\t")
 
 domain=''
 THREADS = 100
