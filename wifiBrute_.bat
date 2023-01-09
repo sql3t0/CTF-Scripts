@@ -35,9 +35,9 @@ FOR /F %%s IN (%lista%) do (
 	netsh wlan connect ssid=%nome% name=%nome% > NULL
 	
 	ECHO [^>] TESTANDO CONEXAO...
-	for /L %%p in (0,1,30) do (  
+	for /L %%p in (0,1,10) do (  
 		REM ping google.com 
-		ping -n 3 google.com 2> NULL | FINDSTR "Resposta de"
+		ping -n 2 google.com 2> NULL | FIND "Resposta de"
 		if not errorlevel 1 goto senhaOK
 	)
 )
