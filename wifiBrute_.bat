@@ -40,8 +40,6 @@ FOR /F %%s IN (%lista%) do (
 		ping -n 3 google.com 2> NULL | FINDSTR "Resposta de"
 		if not errorlevel 1 goto senhaOK
 	)
-	ECHO [.] --------------------------------------
-	ECHO [-]
 )
 
 netsh wlan delete profile name=%nome% 2> NULL
@@ -51,7 +49,7 @@ SET nome=
 SET compS=
 SET lista=
 SET SENHA=
-ECHO "Nenhuma senha encontrada !"
+ECHO [-] Nenhuma senha encontrada !
 GOTO ECHOON
 
 REM Mostra somente se senha encontrada com sucesso.
