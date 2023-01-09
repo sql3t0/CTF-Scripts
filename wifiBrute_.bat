@@ -16,7 +16,7 @@ ECHO .
 FOR /F %%s IN (%lista%) do (
 
 	SET SENHA=%%s
-	ECHO [.] --------------------------------------
+	ECHO [.] -----------------------------------------
 	ECHO [^>] TESTANDO SENHA : %%s
 	
 	REM WPA/PSK xml file type 
