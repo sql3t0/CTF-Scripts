@@ -71,7 +71,7 @@ if __name__ == "__main__":
         TT_EMAILS = len(emails)
         sys.stderr.write(f'[I] Total Emails: {TT_EMAILS}\n')
         if TT_EMAILS >= 30:
-            emails = chunk(emails, 500)
+            emails = chunk(emails, 30)
         else:
             emails = chunk(emails,len(emails))
         
