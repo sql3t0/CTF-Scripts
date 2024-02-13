@@ -32,9 +32,18 @@ def genarate_pwd(email, t , i, len_emails):
         if len(x) >= 6:
             print(x)
             TT_PASS +=1
+            
+    for senha in commonpass:
+        for cs in commonssufix+commonyears:
+            senhacs = f'{senha}{cs}'
+            check_len(senhacs)
+            check_len(f'{senhacs.capitalize()}')
 
-    for c in commonpass+commonyears:
-        check_len(c)
+            for csc in commonspecialchrs:
+                if csc != cs:
+                    senhacsccs = f'{senha}{csc}{cs}'
+                    check_len(senhacsccs)
+                    check_len(f'{senhacsccs.capitalize()}')
 
     for senha in words_from_email:
         senha = senha.strip()
