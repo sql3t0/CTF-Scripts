@@ -627,3 +627,19 @@ EventID| Descrição
 
 </div>
 
+## __Referencias__
+
+&nbsp;
+
++ __Para mais comandos nativos no `CMD` acesse: [lolbas-project.github.io](https://lolbas-project.github.io/)__
+  
++ __Para Event IDs do windows acesse:__ 
+
+> - [__Find Event ID__](https://www.myeventlog.com/search/find)
+> - [__setuid-setgid-and-sticky-bits-on-linux__](https://www.liquidweb.com/kb/how-do-i-set-up-setuid-setgid-and-sticky-bits-on-linux/)
+> - [__windows-rdp-related-event-logs-identification-tracking-and-investigation__](https://ponderthebits.com/2018/02/windows-rdp-related-event-logs-identification-tracking-and-investigation/)
+> - [__security-auditing-overview__](https://docs.microsoft.com/pt-br/windows/security/threat-protection/auditing/security-auditing-overview)
+> - [__windows-logon-types (EventViwer)__](https://www.alteredsecurity.com/post/fantastic-windows-logon-types-and-where-to-find-credentials-in-them#viewer-agegc)
+
+&nbsp;
+#
