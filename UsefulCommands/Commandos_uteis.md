@@ -1,38 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/b-2.0.1/b-html5-2.0.1/b-print-2.0.1/cr-1.5.4/fh-3.2.0/kt-2.6.4/r-2.2.9/rr-1.2.8/sc-2.0.5/sp-1.4.0/sl-1.3.3/datatables.min.css"/>
-<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/b-2.0.1/b-html5-2.0.1/b-print-2.0.1/cr-1.5.4/fh-3.2.0/kt-2.6.4/r-2.2.9/rr-1.2.8/sc-2.0.5/sp-1.4.0/sl-1.3.3/datatables.min.js"></script>
-<style>
-    body{
-        color: #fff;
-        background: #1F1F1F;
-    }
-    pre{
-        border-style: none;
-        background-color: #141415;
-    }
-    code * {
-        color: #fff;
-        background-color: #141415;
-    }
-    @media print {
-        tr.vendorListHeading {
-            background-color: #1F1F1F !important;
-            -webkit-print-color-adjust: exact; 
-        }
-    }
-    h1 { text-shadow: 2px 2px Lightgray; text-align: center; }
-    table { border: solid 1px #ddd !important; background-color: transparent !important}
-    tr, td , th { border: solid 2px black !important; background-color: transparent !important}
-    th { text-align: center !important; background-color: black !important; border: solid 1px #ddd !important;}
-    tr:nth-child(even){background-color: #00000d !important;}
-    #mytablediv {padding: 10px !important; border-radius: 5px !important;} 
-    #MyTable_length, #MyTable_filter, #MyTable_paginate, #MyTable_info { margin: 5px !important; color: #fff !important}
-</style>
-</head>
-<body>
-
 # **Lista de Comandos Úteis**
 
 > __Redirecionar porta para ip remoto ou local (_`cmd`_)__
@@ -663,7 +628,7 @@ EventID| Descrição
 </div>
 
 
-# __Testes para a validação do SOC (`Qradar`)__ 
+# __Testes para a validação de SOC__ 
 
 ### __Tabela de Tecnicas Usadas (`MITRE`)__
 
@@ -1106,14 +1071,3 @@ rmdir /S /Q %tmp%\caldera
 
 &nbsp;
 #
-
-<script>
-    $('table').attr('id', 'MyTable');
-    $(document).ready(function () {
-        table = $('#MyTable').DataTable({
-            responsive: true, autoWidth: true, colReorder: true
-        });
-    });
-</script>
-</body>
-</html>
