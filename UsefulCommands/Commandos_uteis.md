@@ -601,6 +601,11 @@ vssadmin delete shadow /shadow={44f95267-f951-4770-90f1-5746e7b2cb22}
 ([WMICLASS]"root\cimv2:win32_shadowcopy").create("C:\", "ClientAccessible")
 ```
 
+- __Listar eventos de Reboot (_`Powershell`_)__
+```powershell
+Get-EventLog System -Newest 10000 |  Where EventId -in 41,1074,1076,6005,6006,6008,6009,6013 |  Format-Table TimeGenerated,EventId,UserName,Message -AutoSize -wrap
+```
+
 #
 ## __Event IDs mais comuns no Windows__
 
