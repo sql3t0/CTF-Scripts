@@ -606,6 +606,11 @@ vssadmin delete shadow /shadow={44f95267-f951-4770-90f1-5746e7b2cb22}
 Get-EventLog System -Newest 10000 |  Where EventId -in 41,1074,1076,6005,6006,6008,6009,6013 |  Format-Table TimeGenerated,EventId,UserName,Message -AutoSize -wrap
 ```
 
+- __Listar Conexoes por processo (_`Bash`_)__
+```bash
+ps aux | while read a b c d e f g h i j k l;do if [[ $(lsof -w -R -i -a -p $b 2>/dev/null | wc -l) -gt 0 ]];then printf "\n%-12s | %-9s | %-100s | %s\n" "$a" "$b" "$k" "$(lsof -w -R -i -a -p $b 2>/dev/null | wc -l)" && lsof -w -R -i -a -p $b 2>/dev/null | cat -n ;fi;done
+```
+
 #
 ## __Event IDs mais comuns no Windows__
 
