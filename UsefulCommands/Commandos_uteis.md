@@ -265,6 +265,19 @@ Write-Host "[.] Consulta concluída."
  C:\> gpresult /R
 ```
 
+- __Copiar arquivo bloquedo (Locked) pelo sistema (_`cmd`_)__
+```powershell
+C:\WINDOWS\system32\esentutl.exe /y <SOURCE> /vss /d <DEST>
+```
+
+- __Ativar servico sem permissão de Administrador (_`cmd`_)__
+```powershell
+# Lista os dados do servio para saber se ele permite ativacao via Named PIPE
+sc qtriggerinfo RemoteRegistry
+# Ativa o Servico usando o valor de DATA como Nome do PIPE
+echo start > \\.\pipe\winreg
+```
+
 - __Consultar Registros Remoto (_`cmd`_)__
 ```cmd
  REM - Habilita a consulta de registro remoto
