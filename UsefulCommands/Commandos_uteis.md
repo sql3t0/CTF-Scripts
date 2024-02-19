@@ -624,6 +624,15 @@ Get-EventLog System -Newest 10000 |  Where EventId -in 41,1074,1076,6005,6006,60
 ps aux | while read a b c d e f g h i j k l;do if [[ $(lsof -w -R -i -a -p $b 2>/dev/null | wc -l) -gt 0 ]];then printf "\n%-12s | %-9s | %-100s | %s\n" "$a" "$b" "$k" "$(lsof -w -R -i -a -p $b 2>/dev/null | wc -l)" && lsof -w -R -i -a -p $b 2>/dev/null | cat -n ;fi;done
 ```
 
+- __Verificar vazamento de senha (_`Bash`_)__
+```bash
+#!/bin/sh
+
+read -s -p "Senha:" senha
+senha=$(printf "$senha" | sha1sum | cut -d' ' -f1)
+printf "\rHASH -> %s\n" "$(curl -k -s https://api.pwnedpasswords.com/range/${senha:0:5} | grep -i ${senha:6:40})"
+``` 
+
 #
 ## __Event IDs mais comuns no Windows__
 
