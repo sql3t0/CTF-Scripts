@@ -577,6 +577,10 @@ echo start > \\.\pipe\winreg
 ```bash
  sudo socat TCP-LISTEN:8080,fork,reuseaddr TCP:172.25.131.105:3389
 ```
+- __Filtrar icmp-IPV6 com base no TTL (_`Bash`_)__
+```bash
+ sudo tcpdump -i any 'icmp6 && (ip6[7] >=124 and ip6[7] <=128)'
+```
 
 - __Sniff credenciais do SSHD proccess no Linux (_`Bash`_)__
 ```bash
