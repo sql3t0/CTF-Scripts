@@ -1,4 +1,4 @@
-# **Lista de Comandos Úteis**
+![image](https://github.com/sql3t0/CTF-Scripts/assets/29662299/f5b3ebb3-b0f1-4e65-8a48-11c92512d617)# **Lista de Comandos Úteis**
 
 - __Redirecionar porta para ip remoto ou local (_`cmd`_)__
 ```cmd
@@ -612,6 +612,12 @@ echo start > \\.\pipe\winreg
 ```powershell
 type .\uninstall.txt | %{echo "[>] Unisntalling $_ :";winget rm --id "$_" --disable-interactivity --accept-source-agreements --force}
 ```
+
+- __Listar soluções de AntiVirus Instalada (_`Powershell`_)__
+```powershell
+Get-CimInstance -Namespace root/SecurityCenter2 -ClassName AntivirusProduct -ErrorAction SilentlyContinue | Select-Object -Property displayName,instanceGuid,pathToSignedProductExe,pathToSignedReportingEx,productState,timestamp
+```
+
 
 - __Copias de Sombra no Windows  (_`Powershell`/`cmd`_)__
 ```powershell
