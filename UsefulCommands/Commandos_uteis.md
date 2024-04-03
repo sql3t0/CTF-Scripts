@@ -1,5 +1,3 @@
-![image](https://github.com/sql3t0/CTF-Scripts/assets/29662299/f5b3ebb3-b0f1-4e65-8a48-11c92512d617)# **Lista de Comandos Úteis**
-
 - __Redirecionar porta para ip remoto ou local (_`cmd`_)__
 ```cmd
  REM - Adicionar
