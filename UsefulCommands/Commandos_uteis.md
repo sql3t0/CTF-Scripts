@@ -5,6 +5,9 @@
 
  REM - Remover
  C:\> netsh interface portproxy delete v4tov4 listenaddress=0.0.0.0 listenport=445
+
+REM - OBS: Os comando acima apenas criam o redirecionamento de porta, mas caso seja necessario a libercao via Firewall (Local), pode ser usado o seguinte comando:
+C:\> netsh advfirewall firewall add rule name="Port Forwarding" protocol=TCP dir=in localport=<listen_port> action=allow
 ```
 
 - __Lista todos os usuarios no dominio (_`cmd`_)__
