@@ -638,6 +638,15 @@ vssadmin delete shadow /shadow={44f95267-f951-4770-90f1-5746e7b2cb22}
 Get-EventLog System -Newest 10000 |  Where EventId -in 41,1074,1076,6005,6006,6008,6009,6013 |  Format-Table TimeGenerated,EventId,UserName,Message -AutoSize -wrap
 ```
 
+- __Proteger Servico (_`cmd`_)__
+```powershell
+# Proteger Servico
+sc sdset "TesteSvc" D:(D;;DCLCWPDTSD;;;IU)(D;;DCLCWPDTSD;;;SU)(D;;DCLCWPDTSD;;;BA)(A;;CCLCSWLOCRRC;;;IU)(A;;CCLCSWLOCRRC;;;SU)(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)S:(AU;FA;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;WD)
+
+# Desproteger servico
+sc sdset "TesteSvc" D:(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)(A;;CCLCSWLOCRRC;;;IU)(A;;CCLCSWLOCRRC;;;SU)S:(AU;FA;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;WD)
+```
+
 - __Identificar usuario pelo SID (_`Powershell`_)__
 ```powershell
 Get-ADUser -Filter * | Where-Object -Property SID -like "S-1-5-21-35927030-1094727795-1882987033-6186" | Select-Object -Property *
