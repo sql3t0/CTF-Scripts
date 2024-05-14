@@ -647,6 +647,12 @@ sc sdset "TesteSvc" D:(D;;DCLCWPDTSD;;;IU)(D;;DCLCWPDTSD;;;SU)(D;;DCLCWPDTSD;;;B
 sc sdset "TesteSvc" D:(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)(A;;CCLCSWLOCRRC;;;IU)(A;;CCLCSWLOCRRC;;;SU)S:(AU;FA;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;WD)
 ```
 
+- __Listar Servicos com PIPES NOMEADOS (_`cmd`_)__
+```powershell
+FOR /L %i IN (1,1,254) DO @(ping -w 1 -n 1 10.10.64.%i 2>NUL | findstr /I "TTL=12" 1>NUL 2>NUL && for /F "tokens=1,2" %A in ('"sc \\10.10.64.%i query state= all| findstr "SERVICE_NAME NOME_DO_SERV""') DO @(
+echo 10.10.64.%i: %B && sc \\10.10.64.%i qtriggerinfo "%B") | grep -E --color "10.10.64.%i:|DADOS|EVENTO DE REDE|NETWORK EVENT" | grep -E --color "NOMEADO|NAMED" -C1)
+```
+
 - __Identificar usuario pelo SID (_`Powershell`_)__
 ```powershell
 Get-ADUser -Filter * | Where-Object -Property SID -like "S-1-5-21-35927030-1094727795-1882987033-6186" | Select-Object -Property *
