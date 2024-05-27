@@ -9,6 +9,31 @@
  C:\> netsh advfirewall firewall add rule name="Port Forwarding" protocol=TCP dir=in localport=<listen_port> action=allow
 ```
 
+- __Deletar Arquivos Temporarios de Internet (_`cmd`_)__
+```cmd
+ RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 8
+```
+
+- __Deletar Cookies de Internet (_`cmd`_)__
+```cmd
+ RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 2
+```
+
+- __Deletar Historico de Internet (_`cmd`_)__
+```cmd
+ RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 1
+```
+
+- __Deletar Dados de Formularios de Internet (_`cmd`_)__
+```cmd
+ RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 16
+```
+
+- __Deletar Senhas de Paginas da Internet (_`cmd`_)__
+```cmd
+ RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 32
+```
+
 - __Lista todos os usuarios no dominio (_`cmd`_)__
 ```cmd
  wmic useraccount list full
