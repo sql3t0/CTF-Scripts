@@ -678,6 +678,11 @@ FOR /L %i IN (1,1,254) DO @(ping -w 1 -n 1 10.10.64.%i 2>NUL | findstr /I "TTL=1
 echo 10.10.64.%i: %B && sc \\10.10.64.%i qtriggerinfo "%B") | grep -E --color "10.10.64.%i:|DADOS|EVENTO DE REDE|NETWORK EVENT" | grep -E --color "NOMEADO|NAMED" -C1)
 ```
 
+- __Listar Possiveis configurações incorretas de permissao na pasta de NETLOGON (_`cmd`_)__
+```powershell
+dir /S /Q \\mydomain.local\NETLOGON | findstr /R "DIR ^[0-9] Pasta Folder" | findstr /i /v "BUILTIN\Administra"
+```
+
 - __Identificar usuario pelo SID (_`Powershell`_)__
 ```powershell
 Get-ADUser -Filter * | Where-Object -Property SID -like "S-1-5-21-35927030-1094727795-1882987033-6186" | Select-Object -Property *
