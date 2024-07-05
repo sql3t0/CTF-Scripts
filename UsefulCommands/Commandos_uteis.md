@@ -685,7 +685,10 @@ dir /S /Q \\mydomain.local\NETLOGON | findstr /R "DIR ^[0-9] Pasta Folder" | fin
 
 - __Consultar *MTU* das interfaces de rede (_`cmd`_)__
 ```powershell
+# Consultar
 netsh interface ipv4 show subinterfaces
+# Mudar
+netsh int ipv4 set subinterface "NOME_DA_INTERFACE" mtu=tamanho MTU store=persistent
 ```
 
 - __Testar *MTU* (_`cmd`_)__
