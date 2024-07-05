@@ -688,6 +688,13 @@ dir /S /Q \\mydomain.local\NETLOGON | findstr /R "DIR ^[0-9] Pasta Folder" | fin
 netsh interface ipv4 show subinterfaces
 ```
 
+- __Testar *MTU* (_`cmd`_)__
+```powershell
+# Para testar o MTU de uma interface, lembrando de subtrair 28 ao MTU que deseja testar (altere as partes em cinza conforme necessidade)
+# Por exemplo, para testar o MTU de 1500 utilize o comando ping IP_DESTINO -f -l 1472
+ping IP_DESTINO -f -l tamanho MTU
+```
+
 - __Identificar usuario pelo SID (_`Powershell`_)__
 ```powershell
 Get-ADUser -Filter * | Where-Object -Property SID -like "S-1-5-21-35927030-1094727795-1882987033-6186" | Select-Object -Property *
