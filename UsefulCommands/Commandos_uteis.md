@@ -683,6 +683,11 @@ echo 10.10.64.%i: %B && sc \\10.10.64.%i qtriggerinfo "%B") | grep -E --color "1
 dir /S /Q \\mydomain.local\NETLOGON | findstr /R "DIR ^[0-9] Pasta Folder" | findstr /i /v "BUILTIN\Administra"
 ```
 
+- __Consultar *MTU* das interfaces de rede (_`cmd`_)__
+```powershell
+netsh interface ipv4 show subinterfaces
+```
+
 - __Identificar usuario pelo SID (_`Powershell`_)__
 ```powershell
 Get-ADUser -Filter * | Where-Object -Property SID -like "S-1-5-21-35927030-1094727795-1882987033-6186" | Select-Object -Property *
