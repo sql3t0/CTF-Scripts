@@ -663,6 +663,11 @@ vssadmin delete shadow /shadow={44f95267-f951-4770-90f1-5746e7b2cb22}
 Get-EventLog System -Newest 10000 |  Where EventId -in 41,1074,1076,6005,6006,6008,6009,6013 |  Format-Table TimeGenerated,EventId,UserName,Message -AutoSize -wrap
 ```
 
+- __Forcar o update e execução de scripts de GPO (_`cmd`_)__
+```powershell
+gpupdate /force && gpscript.exe /startup && gpscript.exe /Logon
+```
+
 - __Proteger Servico (_`cmd`_)__
 ```powershell
 # Proteger Servico
