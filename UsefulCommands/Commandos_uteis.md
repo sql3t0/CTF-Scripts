@@ -727,6 +727,36 @@ senha=$(printf "$senha" | sha1sum | cut -d' ' -f1)
 printf "\rHASH -> %s\n" "$(curl -k -s https://api.pwnedpasswords.com/range/${senha:0:5} | grep -i ${senha:6:40})"
 ``` 
 
+- __Verificar arquivos ocultos (RootKit) (_`Bash`_)__
+```bash
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+        >&2 echo "Usage: $0 <folder_name>"
+        exit 1
+else
+        LGRAY='\e[90m'
+        LGREE='\e[92m'
+        LCYAN='\e[96m'
+        RESET='\e[0m'
+        DISC=$(df -T | grep -E '/$' | cut -d' ' -f 1)
+        find $1 -type d -not -path "/proc/*" 2>/dev/null | while read d
+        do
+                printf "$LGRAY\r%-80s$RESET" "$d"
+                debugfs $DISC -R "ls -l $d" 2>/dev/null | while read a b c d e f g h i;do echo $i;done | egrep -v "^$|^file(A|B)$" | sort > fileA
+                #ls -lLha $d 2>/dev/null | while read a b c d e f g h i;do echo $i;done | egrep -v "^$|^file(A|B)$" | sort > fileB
+                ls -Lha $d 2>/dev/null | sort | egrep -v "^$|^file(A|B)$" > fileB
+                diff -u fileA fileB 2>/dev/null | grep -v '\-\-\-' | grep -E "^\-" | egrep -v '\-$' | while read f
+                do
+                        printf "$LGREE\r%-80s$RESET | $LCYAN%-40s$RESET \n" "$d" "$(echo $f | sed '0,/\-/s/\-//')"
+                done
+        done
+
+        printf "\n"
+        rm fileA fileB
+fi
+```
+
 #
 ## __Event IDs mais comuns no Windows__
 
