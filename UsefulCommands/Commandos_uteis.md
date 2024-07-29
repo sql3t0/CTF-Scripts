@@ -420,6 +420,8 @@ echo start > \\.\pipe\winreg
  C:\> schtasks /query /v /fo LIST
  REM Remoto
  C:\> schtasks /query /S remote_ip_or_hostname /v /fo LIST
+ REM Remover Tarefa Agendada
+ C:\> schtasks /delete /tn h2dog /f
 ```
 
 - __Gerar hashs de arquivo (_`cmd`_)__
