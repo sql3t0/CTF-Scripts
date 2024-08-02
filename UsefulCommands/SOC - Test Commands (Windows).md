@@ -145,7 +145,7 @@ nslookup 127.0.0.1
 ```cmd
 echo Google: && nslookup google.com 8.8.8.8 &
 echo Control D: && nslookup google.com 76.76.2.0 &
-echo Quad9: && nslookup 9.9.9.9 &
+echo Quad9: && nslookup google.com 9.9.9.9 &
 echo OpenDNS Home: && nslookup google.com 208.67.222.222 &
 echo Cloudflare: && nslookup google.com 1.1.1.1 &
 echo CleanBrowsing: && nslookup google.com 185.228.168.9 &
