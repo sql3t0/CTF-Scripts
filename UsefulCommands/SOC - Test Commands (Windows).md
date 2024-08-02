@@ -103,7 +103,7 @@ net group "Domain Admins" /domain
 
 - Lista usuarios logados na rede [[`Discovery:T1087.002:Domain Account`](https://attack.mitre.org/techniques/T1087/002/)] (`CMD`)
 ```cmd
-FOR /F "TOKENS=1,2" %A IN ('"nslookup %userdnsdomain% 2>NUL | findstr /I "Addresses:""') DO @(FOR /F "tokens=1,2,3 delims=." %X in ('"echo %B 2>NUL"') DO @(FOR /L %i IN (1,1,254) DO @(ping -w 1 -n 1 %X.%Y.%Z.%i 2>NUL | findstr /I "TTL=12" 1>NUL 2>NUL && echo Address: %X.%Y.%Z.%i && query user /server:%X.%Y.%Z.%i 2>NUL)))
+FOR /F "TOKENS=1,2" %A IN ('"nslookup %userdnsdomain% 2>NUL | findstr /I "Address""') DO @(FOR /F "tokens=1,2,3 delims=." %X in ('"echo %B 2>NUL"') DO @(FOR /L %i IN (1,1,254) DO @(ping -w 1 -n 1 %X.%Y.%Z.%i 2>NUL | findstr /I "TTL=12" 1>NUL 2>NUL && echo Address: %X.%Y.%Z.%i && query user /server:%X.%Y.%Z.%i 2>NUL)))
 ```
 
 - Tentar adicionar usuario ao grupo de administradores do dominio [[`Persistence:T1098:Account Manipulation`](https://attack.mitre.org/techniques/T1098/)] (`CMD`)
@@ -123,7 +123,7 @@ arp -a
 
 - Lista nomes Netbios [__DNSDOMAIN__][__LAN/24__] [[`Discovery:T1016:System Network Configuration Discovery`](https://attack.mitre.org/techniques/T1016/)] (`CMD`)
 ```cmd
-FOR /F "TOKENS=1,2" %A IN ('"nslookup %userdnsdomain% | findstr /I "Addresses:""') DO @(FOR /F "tokens=1,2,3 delims=." %X in ('echo %B') DO @(FOR /L %i IN (1,1,254) DO @(ping -w 3 -n 1 %X.%Y.%Z.%i 2>NUL | findstr /I "TTL=127 TTL=126 TTL=125" >NUL && echo Address: %X.%Y.%Z.%i && nbtstat -A %X.%Y.%Z.%i 2>NUL)))
+FOR /F "TOKENS=1,2" %A IN ('"nslookup %userdnsdomain% | findstr /I "Address""') DO @(FOR /F "tokens=1,2,3 delims=." %X in ('echo %B') DO @(FOR /L %i IN (1,1,254) DO @(ping -w 3 -n 1 %X.%Y.%Z.%i 2>NUL | findstr /I "TTL=127 TTL=126 TTL=125" >NUL && echo Address: %X.%Y.%Z.%i && nbtstat -A %X.%Y.%Z.%i 2>NUL)))
 ```
 
 - Lista servidor NTP [__Local__] [[`Discovery:T1124:System Time Discovery`](https://attack.mitre.org/techniques/T1124/)] (`CMD`)
@@ -155,7 +155,7 @@ echo AdGuard:  && nslookup 94.140.14.14
 
 - Listar Hostnames [[`Discovery:T1018:Remote System Discovery`](https://attack.mitre.org/techniques/T1018/)] (`CMD`)
 ```cmd
-FOR /F "TOKENS=1,2" %A IN ('"nslookup %userdnsdomain% | findstr /I "Addresses:""') DO @( FOR /F "tokens=1,2,3 delims=." %X in ('echo %B') DO @(FOR /L %i IN (1,1,254) DO @(echo Address: %X.%Y.%Z.%i && ping -w 1 -n 1 %X.%Y.%Z.%i  >NUL && nslookup %X.%Y.%Z.%i 2>NUL | findstr /I "Nome: Name:" 2>NUL)))
+FOR /F "TOKENS=1,2" %A IN ('"nslookup %userdnsdomain% | findstr /I "Address""') DO @( FOR /F "tokens=1,2,3 delims=." %X in ('echo %B') DO @(FOR /L %i IN (1,1,254) DO @(echo Address: %X.%Y.%Z.%i && ping -w 1 -n 1 %X.%Y.%Z.%i  >NUL && nslookup %X.%Y.%Z.%i 2>NUL | findstr /I "Nome: Name:" 2>NUL)))
 ```
 
 - Lista pastas compartilhadas [__Local__] (`CMD`)
