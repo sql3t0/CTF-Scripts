@@ -143,14 +143,14 @@ nslookup 127.0.0.1
 
 - Checar restriçoes de servidores de DNS [__Remoto__] [[`Command-and-control:T1071.004:Application Layer Protocol: DNS`](https://attack.mitre.org/techniques/T1071/004/)] (`CMD`)
 ```cmd
-echo Google: && nslookup 8.8.8.8 &
-echo Control D: && nslookup 76.76.2.0 &
+echo Google: && nslookup google.com 8.8.8.8 &
+echo Control D: && nslookup google.com 76.76.2.0 &
 echo Quad9: && nslookup 9.9.9.9 &
-echo OpenDNS Home: && nslookup 208.67.222.222 &
-echo Cloudflare: && nslookup 1.1.1.1 &
-echo CleanBrowsing: && nslookup 185.228.168.9 &
-echo Alternate:  && nslookup 76.76.19.19 &
-echo AdGuard:  && nslookup 94.140.14.14
+echo OpenDNS Home: && nslookup google.com 208.67.222.222 &
+echo Cloudflare: && nslookup google.com 1.1.1.1 &
+echo CleanBrowsing: && nslookup google.com 185.228.168.9 &
+echo Alternate:  && nslookup google.com 76.76.19.19 &
+echo AdGuard:  && nslookup google.com 94.140.14.14
 ```
 
 - Listar Hostnames [[`Discovery:T1018:Remote System Discovery`](https://attack.mitre.org/techniques/T1018/)] (`CMD`)
