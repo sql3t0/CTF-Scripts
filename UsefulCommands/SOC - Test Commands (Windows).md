@@ -191,6 +191,48 @@ FOR /F "TOKENS=1,2" %A IN ('"nslookup %userdnsdomain% 2>NUL | findstr /I "Addres
 $IPv4=((Get-WmiObject Win32_NetworkAdapterConfiguration | Where-Object { $_.IPAddress -ne $null }).IPAddress[0] -split '\.')[0..2] -join '.';1..254 | % {"$IPv4.$_"} | % {$ip = $_; 22,23,3389,5900 | % {$port = $_; $socket = New-Object Net.Sockets.TcpClient; $wait = $socket.BeginConnect($ip, $port, $null, $null); $result = $wait.AsyncWaitHandle.WaitOne(100, $false); if ($result -eq $true) {Write-Host "$ip, $port, Open";$socket.EndConnect($wait)}; $socket.Close()}}
 ```
 
+```powershell
+$subnet = "192.168.0."
+$ports = @(21, 22, 23, 135, 137, 445, 3389, 5985, 5986, 80, 443)
+$jobs = @()
+1..254 | ForEach-Object {
+    $ipAddress = "$subnet$_"
+    $jobs += Start-Job -ScriptBlock {
+        param ($ip, $ps)
+        function Test-Ports {
+            param (
+                [string]$ipAddress,
+                [array]$ports
+            )
+            $results = @()
+            $pingResult = Test-Connection -ComputerName $ipAddress -Count 1 -Quiet
+            if ($pingResult) {
+                foreach ($port in $ports) {
+                    $result = Test-NetConnection -ComputerName $ipAddress -Port $port -WarningAction SilentlyContinue
+                    $results += [PSCustomObject]@{
+                        IPAddress = $ipAddress
+                        Port      = $port
+                        Open      = $result.TcpTestSucceeded
+                    }
+                }
+            } else {
+                $results += [PSCustomObject]@{
+                    IPAddress = $ipAddress
+                    Port      = "N/A"
+                    Open      = $false
+                }
+            }           
+            return $results
+        }
+        Test-Ports -ipAddress $ip -ports $ps
+    } -ArgumentList $ipAddress, $ports
+}
+$jobs | ForEach-Object { $_ | Wait-Job }
+$results = $jobs | ForEach-Object { $_ | Receive-Job } | ForEach-Object { $_ }
+$jobs | ForEach-Object { $_ | Remove-Job }
+$results | Select-Object -Property IPAddress,Port,Open | FT -AutoSize -Wrap -Force
+```
+
 - Teste de download de arquivos/scripts 
   
   - `CMD`
