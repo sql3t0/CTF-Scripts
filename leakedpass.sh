@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 read -s -p "Senha:" senha
 senha=$(printf "$senha" | sha1sum | cut -d' ' -f1)
