@@ -44,6 +44,11 @@
  C:\> net user nome_do_usuario /domain
 ```
 
+- __Apagar cache da tabela ARP (_`cmd`_)__
+```powershell
+netsh interface ip delete arpcache
+```
+
 - __Lista Informações de um usuário (_`powershell`_)__
 ```powershell
  PS> Get-ADUser  -Filter 'samAccountName -like "JaneDoe"' | Select-Object -Property *
