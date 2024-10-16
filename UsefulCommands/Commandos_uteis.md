@@ -725,6 +725,13 @@ Get-BitLockerVolume | Select-Object -Property *
 ps aux | while read a b c d e f g h i j k l;do if [[ $(lsof -w -R -i -a -p $b 2>/dev/null | wc -l) -gt 0 ]];then printf "\n%-12s | %-9s | %-100s | %s\n" "$a" "$b" "$k" "$(lsof -w -R -i -a -p $b 2>/dev/null | wc -l)" && lsof -w -R -i -a -p $b 2>/dev/null | cat -n ;fi;done
 ```
 
+- __Limpar cache de autenticação do AD no Linux (_`Bash`_)__
+```bash
+sss_cache -E
+rm -rf /var/lib/sss/db/*
+systemctl restart sssd
+```
+
 - __Verificar vazamento de senha (_`Bash`_)__
 ```bash
 #!/bin/sh
