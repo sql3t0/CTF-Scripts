@@ -782,7 +782,7 @@ From: sender@example.com
 To: recipient@example.com 
 Subject: Telnet email 
 
-My first test message sent via the Telnet client on Microsoft's Windows
+My first test message sent via the Telnet client
 .
     # Response
     250 2.0.0 Ok: queued as ABC123456789
