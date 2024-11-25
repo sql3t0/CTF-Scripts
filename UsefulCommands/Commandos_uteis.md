@@ -741,6 +741,55 @@ senha=$(printf "$senha" | sha1sum | cut -d' ' -f1)
 printf "\rHASH -> %s\n" "$(curl -k -s https://api.pwnedpasswords.com/range/${senha:0:5} | grep -i ${senha:6:40})"
 ``` 
 
+- __Enviar email via TELNET (_`Bash/CMD`_)__
+```bash
+# Connect
+telnet sandbox.smtp.mailtrap.io 2525
+    # Response:
+    220 sandbox.smtp.mailtrap.io ESMTP server ready
+
+# Send:
+EHLO example.com
+    # Response
+    250-sandbox.smtp.mailtrap.io Hello 
+    250-SIZE 37748736
+    250-PIPELINING
+    250-DSN
+    250-ENHANCEDSTATUSCODES
+    250-STARTTLS
+    250-X-ANONYMOUSTLS
+    250-AUTH NTLM
+    250-X-EXPS GSSAPI NTLM
+    250-8BITMIME
+    250-BINARYMIME
+    250-CHUNKING
+    250 XRDST
+# Send:
+MAIL FROM: <sender@example.com>
+    # Response
+    250 2.1.0 Sender OK
+# Send:
+RCPT TO: <recipient@example.com> 
+    # Response
+    250 2.1.5 Recipient OK
+# Send:
+DATA
+    # Response
+    354 Start mail input; end with <CRLF>.<CRLF>
+
+# Send:
+From: sender@example.com
+To: recipient@example.com 
+Subject: Telnet email 
+
+My first test message sent via the Telnet client on Microsoft's Windows
+.
+    # Response
+    250 2.0.0 Ok: queued as ABC123456789
+# Send:
+QUIT
+```
+
 - __Verificar arquivos ocultos (RootKit) (_`Bash`_)__
 ```bash
 #!/bin/bash
