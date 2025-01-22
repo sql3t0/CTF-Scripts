@@ -720,6 +720,11 @@ Get-ADUser -Filter * | Where-Object -Property SID -like "S-1-5-21-35927030-10947
 Get-BitLockerVolume | Select-Object -Property *
 ```
 
+- __Limpar todos os eventos (.evtx) do Windows (_`Powershell`_)__
+```powershell
+for /F "tokens=*" %G IN ('wevtutil el') DO wevtutil cl "%G"
+```
+
 - __Listar Conexoes por processo (_`Bash`_)__
 ```bash
 ps aux | while read a b c d e f g h i j k l;do if [[ $(lsof -w -R -i -a -p $b 2>/dev/null | wc -l) -gt 0 ]];then printf "\n%-12s | %-9s | %-100s | %s\n" "$a" "$b" "$k" "$(lsof -w -R -i -a -p $b 2>/dev/null | wc -l)" && lsof -w -R -i -a -p $b 2>/dev/null | cat -n ;fi;done
