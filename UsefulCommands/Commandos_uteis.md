@@ -744,7 +744,12 @@ systemctl restart sssd
 read -s -p "Senha:" senha
 senha=$(printf "$senha" | sha1sum | cut -d' ' -f1)
 printf "\rHASH -> %s\n" "$(curl -k -s https://api.pwnedpasswords.com/range/${senha:0:5} | grep -i ${senha:6:40})"
-``` 
+```
+
+- __PortScanner - OneLine (_`Bash`_)__
+```bash
+echo 10.12.{0..255}.{1..254} | tr ' ' '\n' | xargs -P50 -IA timeout 1 curl -s -v telnet://A:80 2>&1 | grep Connected
+```
 
 - __Enviar email via TELNET (_`Bash/CMD`_)__
 ```bash
