@@ -19,11 +19,6 @@
  RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 2
 ```
 
-- __Verificar se a maquina esta no Dominio (_`cmd`/`powershell`_)__
-```cmd
- dsregcmd /status
-```
-
 - __Deletar Historico de Internet (_`cmd`_)__
 ```cmd
  RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 1
@@ -37,6 +32,11 @@
 - __Deletar Senhas de Paginas da Internet (_`cmd`_)__
 ```cmd
  RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 32
+```
+
+- __Verificar se a maquina esta no Dominio (_`cmd`/`powershell`_)__
+```cmd
+ dsregcmd /status
 ```
 
 - __Lista todos os usuarios no dominio (_`cmd`_)__
