@@ -9,6 +9,11 @@
  C:\> netsh advfirewall firewall add rule name="Port Forwarding" protocol=TCP dir=in localport=<listen_port> action=allow
 ```
 
+- __Deletar Arquivos Temporarios de Internet (_`bat`_)__
+```cmd
+ cmd /min /C "set __COMPAT_LAYER=RUNASINVOKER && start "" "%1""
+```
+
 - __Deletar Arquivos Temporarios de Internet (_`cmd`_)__
 ```cmd
  RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 8
