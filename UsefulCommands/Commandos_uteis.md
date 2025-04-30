@@ -9,7 +9,7 @@
  C:\> netsh advfirewall firewall add rule name="Port Forwarding" protocol=TCP dir=in localport=<listen_port> action=allow
 ```
 
-- __Deletar Arquivos Temporarios de Internet (_`bat`_)__
+- __Bypass UAC Admin Start Program (_`bat`_)__
 ```cmd
  cmd /min /C "set __COMPAT_LAYER=RUNASINVOKER && start "" "%1""
 ```
