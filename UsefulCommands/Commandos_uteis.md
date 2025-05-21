@@ -682,7 +682,7 @@ Get-EventLog System -Newest 10000 |  Where EventId -in 41,1074,1076,6005,6006,60
 
 - __Forcar o update e execução de scripts de GPO (_`cmd`_)__
 ```powershell
-gpupdate /force && gpscript.exe /startup && gpscript.exe /Logon
+gpupdate /force && gpscript.exe /startup /Logon
 ```
 
 - __Proteger Servico (_`cmd`_)__
