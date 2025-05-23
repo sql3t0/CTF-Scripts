@@ -725,6 +725,18 @@ ping IP_DESTINO -f -l tamanho MTU
 Get-ADUser -Filter * | Where-Object -Property SID -like "S-1-5-21-35927030-1094727795-1882987033-6186" | Select-Object -Property *
 ```
 
+- __Enable Fingerprint Logon (_`cmd`_)[`nt system`]__
+```powershell
+Criar key no Registro
+  Path: Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System
+  Type: REG_DWORD
+  Name: AllowDomainPINLogon
+  Data: Hexadecimal
+  Value: 1
+Referencia:
+  https://answers.microsoft.com/en-us/windows/forum/all/how-to-enable-fingerprint-recognition-when-it-is/f1b99c4a-7bc7-47a6-88ec-743293327033
+```
+
 - __Verificar propriedades do BitLocker (_`Powershell`_)__
 ```powershell
 Get-BitLockerVolume | Select-Object -Property *
