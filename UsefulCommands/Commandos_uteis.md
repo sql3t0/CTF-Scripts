@@ -91,6 +91,8 @@ netsh interface ip delete arpcache
  cmd> query session /server:hostname_or_ip
  # Em múltiplos targets
  FOR /L %i IN (1,1,254) DO @(ping -w 1 -n 1 172.25.131.%i 2>NUL | findstr /I "TTL=12" 1>NUL 2>NUL && echo Address: 172.25.131.%i && query user /server:172.25.131.%i 2>NUL)
+ # Ou
+ FOR %P IN (172.25.131 172.25.130 172.25.255 172.30.27 172.30.31 172.30.32 172.30.36 172.30.42 172.30.45 172.30.46 192.168.77 10.10.64) DO @(FOR /L %i IN (1,1,254) DO @(ping -w 1 -n 1 %P.%i 2>NUL | findstr /I "TTL=12" 1>NUL 2>NUL && echo Address: %P.%i && query user /server:%P.%i 2>NUL | FINDSTR username_here)) 
 ```
 
 - __Listar usuarios ativos em um host remoto (_`cmd`_)__
