@@ -640,6 +640,12 @@ echo start > \\.\pipe\winreg
  sudo strace -t -e read,write,openat -f -p $(pgrep sshd | head -n1) 2>&1 | grep -v "~/.profile" | grep --line-buffered -F -e 'write(5, "\0\0\0\7' -e '\f\0\0\0' -e '.profile'
 ```
 
+- __Rastrear possiveis errors na execucao de processos no Linux (_`Bash`_)__
+```bash
+ trace -f -e write -s 9999 node node_modules/meshcentral
+```
+
+
 - __Executar comando usando WMIClass (_`Powershell`_)__
 ```powershell
 # Local
