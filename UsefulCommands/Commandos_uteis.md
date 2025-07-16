@@ -248,6 +248,12 @@ Write-Host "[.] Consulta concluída."
  PS:\> [char[]]@(99,64,103,101,99,101,49,50,51) -join ''
 ```
 
+- __Validar crendencial de usuario (_`Poweshell`_)__
+```powershell 
+ Add-Type -AssemblyName System.DirectoryServices.AccountManagement
+ (New-Object System.DirectoryServices.AccountManagement.PrincipalContext([System.DirectoryServices.AccountManagement.ContextType]::Domain, 'MyCotp')).ValidateCredentials('myuser', 'MyPass@123')
+```
+
 - __Alterar senha de usuario (_`Poweshell`_)__
 ```powershell 
  # Metodo 1
