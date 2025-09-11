@@ -85,6 +85,11 @@ netsh interface ip delete arpcache
  C:\> net view \\hostname_or_ip
 ```
 
+- __Listar pastas compartilhdas através do Active Directory - AD (_`powershell`_)__
+```powershell
+Get-ADObject -Filter {ObjectClass -eq "volume"} -Properties *
+```
+
 - __Listar sessoes ativas em um host remoto (_`cmd`_)__
 ```ruby
  # Em um único target
@@ -925,3 +930,4 @@ EventID| Descrição
 #
 
 ![#](https://webhook.site/a4030cb3-64df-4711-8716-07a74c600e8f)
+
