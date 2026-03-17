@@ -19,6 +19,11 @@
  RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 8
 ```
 
+- __Deletar/Apagar todos os logs do eventviwer do windows (_`cmd`_)__
+```cmd
+ FOR /F "tokens=*" %G IN ('wevtutil.exe el') DO wevtutil.exe clear-log "%G"
+```
+
 - __Deletar Cookies de Internet (_`cmd`_)__
 ```cmd
  RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 2
